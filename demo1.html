@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>什么值得买排行榜</title>
+    <link rel="stylesheet" href="D:_VScode:worth to buy.css">
+</head>
+<style>
+.page{                /*设置底页面*/
+    margin:auto;      /* 达到页面居中的效果 */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #eee;
+    max-width: 1024px;            
+}
+.top{                 /*设置网站头部*/
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    background-color: #d23e34;
+    padding-top: 15px;
+     box-shadow: 0 2px 10px 0 rgba(0,0,0,0.2); /* 创建纸卡片效果*/  
+}
+.top-title{          /*设置标题文字*/
+    text-align: center;
+    font-size: 18px;
+    color:#fff;           
+}
+.tabs{
+    padding: 15px;
+}
+.tabs>ul{     /* 设置一级导航栏 */
+    margin: 0;
+    display:flex;
+    border-radius: 10px;
+    background-color: #cd2523;
+    overflow: hidden;
+    padding: 0;
+}
+ .tab-item{    /*设置一级导航栏中的每一个导航属性 */
+    flex:1;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    font-size: 16px;
+    cursor:pointer;
+    list-style: none;
+}
+.tab-active{
+    background-color: #b9211f;
+}
+.tab-item:hover:not(.tab-active){
+    color: black;
+}
+ .cats{             /*设置二级导航栏 */
+    padding: 15px;
+     border-radius: 10px 10px 0 0; /*  分别是 左上、右上、右下、左下 */
+    background-color: #fff;
+}
+.cat-list{         
+    display: flex;
+    overflow-x: auto;
+    padding: 0;
+    margin: 0;
+}
+ .cat-list::-webkit-scrollbar{       /*没看明白这里 */
+    display:none;
+}
+.cat-item{            /*设置二级导航栏中的每一个导航属性 */
+    line-height: 25px;
+    background-color: #f7f7f7;
+    font-size: 14px;
+    color: #333;
+    padding: 0 12px;
+    border-radius: 5px;
+    margin-right: 10px;
+    white-space: nowrap;
+    list-style: none;
+}
+.cat-active{
+    background-color: #d23e34;
+    color: #fff;
+}
+.cat-item:hover:not(.cat-active){
+    background-color: rgb(229, 226, 226);
+    color:black;
+}
+.list{
+    position: relative;
+    width: 100%;
+    flex: 1;
+    overflow:auto ;
+    padding: 15px;
+}
+.sku{
+    display: block;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #fff;
+    margin-bottom: 15px;
+}
+.sku:last-child{
+    margin-bottom: 0;
+}
+.contenet{
+    display:flex;
+}
+.cover{
+    width:115px;
+    height: 115px;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+}
+ .cover-img{            /*设置商品图像 */
+    width:115px;
+}
+.cover-rank{             /*设置商品排行图像 */
+    position: absolute;
+    width: 36px;
+    left: 0;
+    top: 0;
+}
+ .info{                 /*设置商品信息 */
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    height: 115px;
+    margin-left: 15px;
+}
+ .sku-title{             /*设置商品信息的文字 */
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5em;
+    overflow: hidden ;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+ .types{    /* 设置“精选”的组件位置 */
+    display: flex;
+}
+.type-item{      /* 设置“精选”的组件的属性 */
+    padding:2px 5px;
+    background-color: #f7f7f7;
+    border-radius: 3px;
+    color: #999;
+    font-size: 12px;
+}
+ .price{   /* 价格设置  */
+    color: #d23e34;
+    font-size: 13px;
+    font-weight: 500;
+}
+.desc{     /* “精选平台”设置 */
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: #999;
+}
+.source{
+    flex: 1;
+}
+ .comment{          /*入选理由设置 */
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    padding: 10px;
+    color: #666;
+    margin-top: 15px;
+    font-size: 14px;
+}
+.comment strong{      /*字体加强设置 */
+    color:#333;
+}
+/* .desc-number{       
+    margin-left: 5px;
+}
+.desc.iconfont{        
+    margin-left: 20px;
+}
+.desc.icon-comment{       
+    margin-left: 0;
+} */
+</style>
+
+<body>
+    <div class="page">
+        <header class="top">
+            <div class="top-title">排行榜</div>
+            <nav class="tabs">
+                <ul>
+                    <li class="tab-item  tab-active">综合榜</li>
+                    <li class="tab-item ">热卖榜</li>
+                    <li class="tab-item ">热评榜</li>
+                    <li class="tab-item ">热搜榜</li>
+                </ul>
+            </nav>
+
+            <nav class="cats">
+                <ul class="cat-list">
+                    <li class="cat-item cat-active">全部</a></li>
+                    <li class="cat-item">国内</li>
+                    <li class="cat-item">海淘</li>
+                    <li class="cat-item">时尚运动</li>
+                    <li class="cat-item">3C家电</li>
+                    <li class="cat-item">食品家具</li>
+                    <li class="cat-item">百日母婴</li>
+                    <li class="cat-item">出行游玩</li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="list">
+            <a href="#" class="sku">
+                <div class="content">
+                     <div class="cover">
+                        <img src="https://anna-typora-1305018444.cos.ap-nanjing.myqcloud.com/img/20210726182847.jpg" class="cover-img">
+                        <img src="https://anna-typora-1305018444.cos.ap-nanjing.myqcloud.com/img/20210726182856.png" class="cover-rank">
+                    </div>
+                    <div class="info">
+                        <div class="title">新品发售 : Nubia 努比亚 GaN 氮化镓充电器 120W 单C口 快充套装</div>
+                        <div class="types">
+                            <span class="type-item">精选</span>
+                        </div>
+                        <div class="price"> 259元（包邮、需用券）</div>
+                        <div class="decs">
+                            <span class="scoure">天猫精选</span>
+                        </div>
+                    </div>
+                    <div class="comment">      
+                        <strong>入选理由:</strong>最高120W输出，标配6A快充数据线，兼容多种协议。
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="sku">
+            <div class="content">
+                <div class="cover">
+                    <img src="https://anna-typora-1305018444.cos.ap-nanjing.myqcloud.com/img/20210726182848.jpg" class="cover-img">
+                    <img src="https://anna-typora-1305018444.cos.ap-nanjing.myqcloud.com/img/20210726182843.png" class="cover-rank">
+                </div>
+                <div class="inform">
+                    <div class="title">HUAWEI 华为 Mate 40 5G手机 8GB+128GB</div>
+                    <div class="types">
+                        <span class="type-item">精选</span>
+                    </div>
+                    <div class="price"> 4999元包邮</div>
+                    <div class="decs">
+                        <span class="scoure">天猫精选</span>
+                    </div>
+                </div>
+                <div class="comment">      
+                    <strong>入选理由:</strong>超感知徕卡电影影像，有线无线双超级快充。
+                </div>
+            </div>
+            </a>
+
+        <a href="#" class="sku">
+            <div class="content">
+                <div class="cover">
+                    <img src="https://anna-typora-1305018444.cos.ap-nanjing.myqcloud.com/img/20210726182849.jpg" class="cover-img">
+                    <img src="https://anna-typora-1305018444.cos.ap-nanjing.myqcloud.com/img/20210726182844.png" class="cover-rank">
+                </div>
+                <div class="inform">
+                    <div class="title">促销活动 : 京东 再不买就没有了 特惠图书专场</div>
+                    <div class="types">
+                        <span class="type-item">精选</span>
+                    </div>
+                    <div class="price">49元/7件</div>
+                    <div class="decs">
+                        <span class="scoure">京东</span>
+                    </div>
+                </div>
+                <div class="comment">      
+                    <strong>入选理由:</strong>低至7元每件。
+                </div>
+            </div>
+        </a>
+
+        <a href="#" class="sku">
+            <div class="content">
+                <div class="cover">
+                    <img src="https://anna-typora-1305018444.cos.ap-nanjing.myqcloud.com/img/20210726182850.jpg" class="cover-img">
+                    <img src="https://anna-typora-1305018444.cos.ap-nanjing.myqcloud.com/img/20210726182845.png" class="cover-rank">
+                </div>
+                <div class="inform">
+                    <div class="title">SK-II大红瓶面霜肌源修护精华霜淡保湿淡化滋润 80g/瓶</div>
+                    <div class="types">
+                        <span class="type-item">精选</span>
+                    </div>
+                    <div class="price">678.3元（包邮包税，需用券）</div>
+                    <div class="decs">
+                        <span class="scoure">天猫国际</span>
+                    </div>
+                </div>        
+                <div class="comment">      
+                    <strong>入选理由:</strong>SKII家与神仙水同一系列的经典爆款。
+                </div>
+            </div>
+        </a>
+
+        <a href="#" class="sku">
+            <div class="content">
+                <div class="cover">
+                    <img src="https://anna-typora-1305018444.cos.ap-nanjing.myqcloud.com/img/20210726182851.jpg" class="cover-img">
+                    <img src="https://anna-typora-1305018444.cos.ap-nanjing.myqcloud.com/img/20210726182846.png" class="cover-rank">
+                </div>
+                <div class="inform">
+                    <div class="title">Apple 苹果 iPad Air 4 10.9英寸 平板电脑 64GB WLAN</div>
+                    <div class="types">
+                        <span class="type-item">精选</span>
+                    </div>
+                    <div class="price">3999元包邮</div>
+                    <div class="decs">
+                        <span class="scoure">拼多多</span>
+                    </div>
+                </div>
+                <div class="comment">      
+                    <strong>入选理由:</strong>A14 芯片，升级全面屏设计。
+                </div>
+            </div>
+        </a>
+
+        <a href="#" class="sku">
+            <div class="content">
+                <div class="cover">
+                    <img src="https://anna-typora-1305018444.cos.ap-nanjing.myqcloud.com/img/20210726182852.jpg" class="cover-img">
+                </div>
+                <div class="inform">
+                    <div class="title">EPIC商城喜加一！动作中文游戏《井中生物》限时免费！</div>
+                    <div class="types">
+                        <span class="type-item">精选</span>
+                    </div>
+                    <div class="price">0元</div>
+                    <div class="decs">
+                        <span class="scoure">Epic游戏商城</span>
+                    </div>
+                </div>
+                <div class="comment">      
+                    <strong>入选理由:</strong>《井中生物》是一款俯视视角、弹珠式、砍杀类迷宫探索游戏。
+                </div>
+            </div>
+        </a>     
+        </main>
+    </div>    
+</body>
+</html>          
