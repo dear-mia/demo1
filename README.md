@@ -6,10 +6,12 @@ This is a demo about HTML and CSS
 ![image-20210730100257672](https://anna-typora-1305018444.cos.ap-nanjing.myqcloud.com/img/20210730100257.png)
 
 照着敲了一遍代码之后大概明白了这个布局和框架
+（这是原网站👇）
 
 ![image-20210804091618764](https://anna-typora-1305018444.cos.ap-nanjing.myqcloud.com/img/20210804091626.png)
 
 然而还是有问题
+（这是我模仿出来的网站👇）
 
 ![image-20210804110409631](https://anna-typora-1305018444.cos.ap-nanjing.myqcloud.com/img/20210804110409.png)
 
