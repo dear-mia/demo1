@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>示例二</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>旅游公司</h1>
+      <nav>
+        <ul>
+          <li><a href="#about">公司简介</a></li>
+          <li><a href="#destinations">景点介绍</a></li>
+          <li><a href="#contact">联系我们</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="about">
+        <h3>公司简介</h3>
+        <p>
+          我们是一家专门为客户创造难忘体验的旅游公司。
+          我们的专家团队将帮助您规划您的梦想假期，并确保每一个细节都得到妥善处理。
+        </p>
+      </section>
+      <section id="destinations">
+        <h3>主要景点</h3>
+        <div class="image-container">
+          <a href="#"><img src="img/gugong.jpg" /></a>
+          <a href="#"><img src="img/pisa.jpg" /></a>
+          <a href="#"><img src="img/sydney.jpg" /></a>
+        </div>
+      </section>
+      <section id="contact">
+        <h3>联系我们</h3>
+        <form>
+          <label for="name">姓名:</label>
+          <input type="text" id="name" name="name" />
+          <br />
+          <br />
+          <label for="email">邮件:</label>
+          <input type="email" id="email" name="email" />
+          <br />
+          <br />
+          <label for="message">留言:</label>
+          <textarea id="message" name="message"></textarea>
+          <br />
+          <br />
+          <input type="submit" id="submit-button" value="提交" />
+        </form>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2023 金山训练营Web前端组</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

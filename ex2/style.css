@@ -1,0 +1,152 @@
+/* Global styles */
+html {
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    line-height: 1.5;
+    background-color: #f7f7f7;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Header styles */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav ul{
+    display: flex;
+	flex-direction: row;
+    align-items: center;
+	list-style-type: none;
+}
+
+nav a {
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+nav a:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Main styles */
+
+main {
+    padding: 2rem;
+    margin-top: 5rem;
+}
+
+section {
+    margin-bottom: 3rem;
+}
+
+section h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+section p {
+    margin-bottom: 1.5rem;
+}
+
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.image-container img {
+    flex: 1 0 auto;
+    max-width: 100%;
+    height: auto;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+}
+
+form input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+form input[type="submit"]:hover {
+    background-color: #666;
+}
+
+/* Footer styles */
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Responsive styles */
+
+@media screen and (max-width: 768px) {
+    header {
+        padding: 0.5rem;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+}
