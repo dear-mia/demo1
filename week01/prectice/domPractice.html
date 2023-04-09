@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <button onclick="getDivs()" id="get">产生3个div</button>
+        <button onclick="delDivs()" id="del">删除所有div</button>
+    </div>
+    
+
+    <script>
+        var element = document.getElementById("root");     
+        var divNum = 0;
+        var newDiv = document.createElement("div"); 
+        newDiv.setAttribute('id','allNewDiv');
+        element.appendChild(newDiv);
+
+        function getDivs(){          
+            for(var i= divNum; i<divNum+3 ;i++){
+                var node = document.createElement("div");
+                node.setAttribute("id","div"+(i+1));
+                newDiv.appendChild(node);       
+                document.getElementById("div"+(i+1)).innerHTML = "这是项目"+(i+1);    
+            }           
+            divNum+=3;
+        }
+
+        function delDivs(){
+            for(var i = 0; i < divNum; i++){
+                var removeDiv = document.getElementById("div"+(i+1));
+                newDiv.removeChild(removeDiv);
+            }
+            divNum = 0;     
+        }
+
+        window.onload = function(){
+            for(var i = 0; i < divNum; i++){
+                document.getElementById("div"+(i+1)).onclick = function(){
+                    var removeDiv = document.getElementById("div"+(i+1));
+                    // newDiv.removeChild(removeDiv);
+                    console.log(removeDiv.id);
+                    divNum --;
+                }               
+            }
+        }
+    </script>
+</body>
+</html>
